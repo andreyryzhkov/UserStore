@@ -14,6 +14,26 @@ public class UserService implements IUserService {
         return userStoreDao.getUsers();
     }
 
+    @Override
+    public int InsertUser(User user) {
+        return userStoreDao.InsertUser(user);
+    }
+
+    @Override
+    public User getUserById(int id) {
+        return userStoreDao.getUserById(id);
+    }
+
+    @Override
+    public void UpdateUser(User user) {
+        userStoreDao.UpdateUser(user);
+    }
+
+    @Override
+    public void DeleteUser(int id) {
+        userStoreDao.DeleteUser(id);
+    }
+
     public void setUserStoreDao(UserStoreDao userStoreDao) {
         this.userStoreDao = userStoreDao;
     }

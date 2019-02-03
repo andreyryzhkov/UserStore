@@ -10,8 +10,14 @@ public class User {
     private double salary;
     private Date dateOfBirth;
 
-    public User(){
+    public User() {
 
+    }
+
+    public User(String firstName, String lastName, double salary) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.salary = salary;
     }
 
     public User(int id, String firstName, String lastName, double salary) {

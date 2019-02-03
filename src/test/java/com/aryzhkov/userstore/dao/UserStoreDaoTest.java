@@ -21,4 +21,23 @@ public class UserStoreDaoTest {
             assertNotEquals(user.getSalary(), 0);
         }
     }
+
+    @Test
+    public void testInsertUser() {
+        User user = new User("Marko", "Popov", 509.1);
+        UserStoreDao userStoreDao = new UserStoreDao();
+        userStoreDao.InsertUser(user);
+    }
+
+    @Test
+    public void testDeleteUser() {
+        UserStoreDao userStoreDao = new UserStoreDao();
+        userStoreDao.DeleteUser(3);
+    }
+
+    @Test
+    public void testGetUserById() {
+        UserStoreDao userStoreDao = new UserStoreDao();
+        User user = userStoreDao.getUserById(1);
+    }
 }
