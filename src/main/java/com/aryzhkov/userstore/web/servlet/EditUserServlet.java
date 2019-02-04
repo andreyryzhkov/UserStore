@@ -30,8 +30,18 @@ public class EditUserServlet extends HttpServlet {
         PageGenerator pageGenerator = PageGenerator.instance();
         String page = pageGenerator.getPage("edituser.html", pageVariables);
         response.getWriter().write(page);
+    }
 
-        response.setContentType("text/html;charset=utf-8");
-        response.setStatus(HttpServletResponse.SC_OK);
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int id = Integer.parseInt(request.getParameter("id")); // TODO: ID is not clear
+        String firstName = request.getParameter("firstname");
+        String lastName = request.getParameter("lastname");
+        double salary = Double.parseDouble(request.getParameter("salary"));
+
+        User user = new User(id, firstName, lastName, salary);
+        userService.UpdateUser(user);
+
+        response.sendRedirect(request.getContextPath() + "/users");
     }
 }

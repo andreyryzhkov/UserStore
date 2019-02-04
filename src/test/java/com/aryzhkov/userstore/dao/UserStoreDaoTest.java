@@ -32,7 +32,7 @@ public class UserStoreDaoTest {
     @Test
     public void testDeleteUser() {
         UserStoreDao userStoreDao = new UserStoreDao();
-        userStoreDao.DeleteUser(3);
+        userStoreDao.DeleteUser(1);
     }
 
     @Test

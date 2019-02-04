@@ -6,7 +6,8 @@
 </head>
 <body>
 
-<form action="edituser.html" method="POST">
+<form action="/users/edit" method="POST">
+    ID: <input type="hidden" name="id" value="${user.id}"/>
     FirstName: <input type="text" name="firstname" value="${user.firstName}"/>
     LastName: <input type="text" name="lastname" value="${user.lastName}"/>
     Salary: <input type="number" step="0.01" min="0" lang="en-150" name="salary" value="${user.salary}"/>

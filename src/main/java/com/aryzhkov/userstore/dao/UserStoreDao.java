@@ -4,10 +4,7 @@ import com.aryzhkov.userstore.dao.connection.JdbcConnection;
 import com.aryzhkov.userstore.dao.mapper.UserRowMapper;
 import com.aryzhkov.userstore.entity.User;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,12 +67,11 @@ public class UserStoreDao implements IUserStoreDao {
     }
 
     public void DeleteUser(int id) {
-        StringBuilder deleteBuilder = new StringBuilder();
-        deleteBuilder.append("DELETE FROM user WHERE id = ").append(id);
+        String deleteSQL = "DELETE FROM user WHERE id = ?";
         try (Connection connection = JdbcConnection.getConnection();
-             Statement statement = connection.createStatement()) {
-
-            statement.executeUpdate(deleteBuilder.toString());
+             PreparedStatement statement = connection.prepareStatement(deleteSQL)) {
+            statement.setInt(1, id);
+            statement.executeUpdate();
 
         } catch (SQLException e) {
             throw new RuntimeException("Delete user is failed", e);
